@@ -11,7 +11,7 @@ class DataPrep:
             elif filename[-4:] == '.csv':
                 df = pd.read_csv(filename)
                 return df
-        elif len(filename>=5):
+        if len(filename>=5):
             if filename[-4:] == '.xls' or filename[-5:] == '.xlsx' :
                 df = pd.read_excel(filename)
                 return df
@@ -87,16 +87,26 @@ class DataPrep:
 
     #function to save files to different formats
     def saveFile(self, df, filename):
-        if filename[-4:] == '.csv':
-            df.to_csv(filename)
-        elif filename[-5:] == '.xlsx' or filename[-4:] == '.xls':
-            df.to_excel(filename)
-        elif filename[-5:] == '.json':
-            df.to_json(filename)
-        elif filename[-5:] == '.html':
-            df.to_html(filename)
-        elif filename[-4:] == '.sql' or filename[-3:] == '.db':
-            df.to_sql(filename)
+        if len(filename) > 3:
+            if filename[-4:] == '.sql' or filename[-3:] == '.db':
+                df.to_sql(filename)
+                return True
+        if len(filename) > 4: 
+            if filename[-4:] == '.csv':
+                df.to_csv(filename)
+                return True
+            elif filename[-4:] == '.xls':
+                df.to_excel(filename)
+                return True
+        if len(filename) > 5:
+            if filename[-5:] == '.xlsx':
+                df.to_excel(filename)
+                return True
+            elif filename[-5:] == '.json':
+                df.to_json(filename)
+                return True
+            elif filename[-5:] == '.html':
+                df.to_html(filename)
+                return True
         else:
             return False
-        return True
