@@ -66,7 +66,8 @@ class DataPrep:
             print()
         #print mean and columns for specified numerical columns
         else:
-            print('Mean and Median for numerical columns:')
+            if len(numerical_cols) != 0:
+                print('Mean and Median for numerical columns:')
             for col in numerical_cols:
                 print('{}: mean= {}, median= {}'.format(col, df[col].mean(), df[col].median()))
             print()
@@ -80,7 +81,8 @@ class DataPrep:
                 print()
         #print value counts for specified columns
         else:
-            print('Value Counts for categorically encoded columns:')
+            if len(category_cols) != 0:
+                print('Value Counts for categorically encoded columns:')
             for col in category_cols:
                 print(df[col].value_counts())
                 print()
