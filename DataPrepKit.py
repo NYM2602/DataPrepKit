@@ -108,5 +108,4 @@ class DataPrep:
             elif filename[-5:] == '.html':
                 df.to_html(filename)
                 return True
-        else:
-            return False
+        return False
