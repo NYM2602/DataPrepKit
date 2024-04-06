@@ -11,7 +11,7 @@ class DataPrep:
             elif filename[-4:] == '.csv':
                 df = pd.read_csv(filename)
                 return df
-        if len(filename>=5):
+        if len(filename) >= 5:
             if filename[-4:] == '.xls' or filename[-5:] == '.xlsx' :
                 df = pd.read_excel(filename)
                 return df
